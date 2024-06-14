@@ -1,6 +1,6 @@
 import datetime
 
-import masks
+from masks import get_mask_card_number, get_mask_account
 
 def mask_account_card(account_card: str) -> str:
     """Функция маскирует номер счета/карты с добавлением платежной системы счета/карты"""
@@ -12,9 +12,9 @@ def mask_account_card(account_card: str) -> str:
         elif i.isdigit():
             account_card_digits += i
     if len(account_card_digits) == 16:
-        final_numbers = masks.get_mask_card_number(int(account_card_digits))
+        final_numbers = get_mask_card_number(int(account_card_digits))
     else:
-        final_numbers = masks.get_mask_account(int(account_card_digits))
+        final_numbers = get_mask_account(int(account_card_digits))
 
     return str(account_card_word + " " + final_numbers)
 
@@ -26,6 +26,8 @@ def get_data(date: str) -> str:
 
     return formatted_date
 
+account_card = "Счет 73654108430135874305"
+print(mask_account_card(account_card))
 
 
 
