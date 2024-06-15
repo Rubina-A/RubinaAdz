@@ -2,6 +2,7 @@ import datetime
 
 from masks import get_mask_card_number, get_mask_account
 
+
 def mask_account_card(account_card: str) -> str:
     """Функция маскирует номер счета/карты с добавлением платежной системы счета/карты"""
     account_card_word = ""
@@ -25,8 +26,3 @@ def get_data(date: str) -> str:
     formatted_date = date_obj.strftime("%d.%m.%Y")
 
     return formatted_date
-
-
-
-
-
