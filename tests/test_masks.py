@@ -1,6 +1,7 @@
 import pytest
 
-from src.masks import get_mask_card_number, get_mask_account
+from src.masks import get_mask_account, get_mask_card_number
+
 
 @pytest.mark.parametrize("card_number, mask_card_number", [
     (7000792289606361, "7000 79** **** 6361"),
@@ -10,6 +11,7 @@ from src.masks import get_mask_card_number, get_mask_account
 ])
 def test_get_mask_card_number(card_number, mask_card_number):
     assert get_mask_card_number(card_number) == mask_card_number
+
 
 @pytest.mark.parametrize("account_number, mask_account_number", [
     (73635108430135871515, "**1515"),

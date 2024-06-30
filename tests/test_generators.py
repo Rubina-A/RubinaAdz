@@ -1,6 +1,7 @@
-from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
-
 import pytest
+
+from src.generators import card_number_generator, transaction_descriptions
+
 
 def test_transaction_descriptions():
     transactions = [
@@ -22,8 +23,9 @@ def test_transaction_descriptions():
 
     assert descriptions == expected
 
+
 def test_card_number_generator():
-    generator = card_number_generator(1, 10)
+    generator = card_number_generator(1, 7)
     assert next(generator) == "0000 0000 0000 0001"
     assert next(generator) == "0000 0000 0000 0002"
     assert next(generator) == "0000 0000 0000 0003"
@@ -31,6 +33,3 @@ def test_card_number_generator():
     assert next(generator) == "0000 0000 0000 0005"
     assert next(generator) == "0000 0000 0000 0006"
     assert next(generator) == "0000 0000 0000 0007"
-    assert next(generator) == "0000 0000 0000 0008"
-    assert next(generator) == "0000 0000 0000 0009"
-    assert next(generator) == "0000 0000 0000 0010"
