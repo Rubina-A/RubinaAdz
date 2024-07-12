@@ -3,6 +3,14 @@ from pathlib import Path
 from typing import Any
 
 from src.config import ROOTPATH
+import logging
+
+logger = logging.getLogger('utils')
+file_handler = logging.FileHandler('log/my_logging.log')
+file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s')
+file_handler.setFormatter(file_formatter)
+logger.addHandler(file_handler)
+logger.setLevel(logging.DEBUG)
 
 
 def read_json_file(file_path: Any) -> list[dict]:
@@ -15,9 +23,11 @@ def read_json_file(file_path: Any) -> list[dict]:
                 operations = json.load(file)
                 return operations
             except json.JSONDecodeError:
+                logger.error(f'Ошибка дедирования файла')
                 print("Ошибка декодирования файла.")
                 return []
     except FileNotFoundError:
+        logger.error(f'Ошибка {FileNotFoundError}')
         print("Файл не найден.")
         return []
 
