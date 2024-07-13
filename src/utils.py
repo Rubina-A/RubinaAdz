@@ -6,7 +6,7 @@ from src.config import ROOTPATH
 import logging
 
 logger = logging.getLogger('utils')
-file_handler = logging.FileHandler('log/my_logging.log')
+file_handler = logging.FileHandler('log/my_logging.log', mode='w')
 file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s')
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
@@ -23,7 +23,7 @@ def read_json_file(file_path: Any) -> list[dict]:
                 operations = json.load(file)
                 return operations
             except json.JSONDecodeError:
-                logger.error(f'Ошибка дедирования файла')
+                logger.error(f'Ошибка дедирования файла {json.JSONDecodeError}')
                 print("Ошибка декодирования файла.")
                 return []
     except FileNotFoundError:
