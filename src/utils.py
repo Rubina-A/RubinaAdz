@@ -1,9 +1,9 @@
 import json
+import logging
 from pathlib import Path
 from typing import Any
 
 from src.config import ROOTPATH
-import logging
 
 logger = logging.getLogger('utils')
 file_handler = logging.FileHandler('log/my_logging.log', mode='w')
@@ -20,6 +20,7 @@ def read_json_file(file_path: Any) -> list[dict]:
     try:
         with open(file_path, "r", encoding="utf-8") as file:
             try:
+                logger.info(f'Открытие файла прошло успешно')
                 operations = json.load(file)
                 return operations
             except json.JSONDecodeError:
