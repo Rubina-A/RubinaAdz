@@ -11,6 +11,6 @@ def test_log():
 
 
 def test_console_output(capsys):
-    result = my_function(3, 1)
+    _ = my_function(3, 1)
     captured = capsys.readouterr()
     assert captured.out == "my_function ok\n"
