@@ -39,11 +39,7 @@ file_path = Path(ROOTPATH, "../data/operations.json")
 transactions = read_json_file(file_path)
 
 
-csv_file = '../data/transactions.csv'
-excel_file = '../data/transactions_excel.xlsx'
-
-
-def read_csv():
+def read_csv(csv_file):
     df_csv = pd.read_csv(csv_file, delimiter=";")
     df_csv["operationAmount"] = df_csv.apply(lambda row: {"amount": row["amount"],
                                                           "currensy": {"name": row["currency_name"],
@@ -55,10 +51,10 @@ def read_csv():
     return list_dict
 
 
-# print(read_csv())
+# print(read_csv('../data/transactions.csv'))
 
 
-def read_excel():
+def read_excel(excel_file):
     df_excel = pd.read_excel(excel_file)
     df_excel["operationAmount"] = df_excel.apply(lambda row: {"amount": row["amount"],
                                                               "currensy": {"name": row["currency_name"],
@@ -70,4 +66,4 @@ def read_excel():
     return list_dict
 
 
-print(read_excel())
+# print(read_excel('../data/transactions_excel.xlsx'))
