@@ -2,8 +2,6 @@ from typing import Any
 
 import requests
 
-from src.utils import transactions
-
 
 def transfer_to_rubles(transaction: Any) -> float:
     """Функцию, которая принимает на вход транзакцию и возвращает сумму транзакции в рублях"""
