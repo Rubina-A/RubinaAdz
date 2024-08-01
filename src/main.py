@@ -62,7 +62,6 @@ def main():
         for trans in filter_file:
             if trans["operationAmount"]["currency"]["code"] == "RUB":
                 filter_file_ruble.append(trans)
-    else:
         filter_file_ruble = filter_file
 
     print("Отфильтровать список транзакций по определенному слову в описании? ДА/НЕТ")
