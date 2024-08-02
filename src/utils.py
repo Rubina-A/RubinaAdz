@@ -43,7 +43,7 @@ def read_csv(csv_file):
     """Функция, которая принимает на вход путь до файла и преобразовывет его в список словарей"""
     df_csv = pd.read_csv(csv_file, delimiter=";")
     df_csv["operationAmount"] = df_csv.apply(lambda row: {"amount": row["amount"],
-                                                          "currensy": {"name": row["currency_name"],
+                                                          "currency": {"name": row["currency_name"],
                                                                        "code": row["currency_code"]}}, axis=1)
 
     new_col_order = ["id", "state", "date", "operationAmount", "description", "from", "to"]
@@ -59,7 +59,7 @@ def read_excel(excel_file):
     """Функция, которая принимает на вход путь до файла и преобразовывет его в список словарей"""
     df_excel = pd.read_excel(excel_file)
     df_excel["operationAmount"] = df_excel.apply(lambda row: {"amount": row["amount"],
-                                                              "currensy": {"name": row["currency_name"],
+                                                              "currency": {"name": row["currency_name"],
                                                                            "code": row["currency_code"]}}, axis=1)
 
     new_col_order = ["id", "state", "date", "operationAmount", "description", "from", "to"]

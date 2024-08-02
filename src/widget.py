@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 
 from src.masks import get_mask_account, get_mask_card_number
 
@@ -22,7 +22,8 @@ def mask_account_card(account_card: str) -> str:
 
 def get_data(date: str) -> str:
     """Функция преобразует формат даты в день/месяц/год"""
-    date_obj = datetime.datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%f")
-    formatted_date = date_obj.strftime("%d.%m.%Y")
+    no_format_date = datetime.strptime(date[:10], ("%Y-%m-%d"))
+    format_date = no_format_date.strftime("%d.%m.%Y")
 
-    return formatted_date
+    return format_date
+
